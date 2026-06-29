@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PublicRouter } from "./PublicRouter";
 import { firebase } from '../firebase/firebase-config'
 import { useDispatch } from "react-redux";
-import { login } from "../actions/auth";
+import { login } from "../store/slices/authSlice";
 import { YourTreeScreen } from "../components/Private/YourTreeScreen";
 import { PublicRoute } from "./PublicRoute";
 import { PrivateRoute } from "./PrivateRoute";
@@ -21,7 +21,7 @@ export const AppRouter = () => {
       firebase.auth().onAuthStateChanged((user) => {
          // console.log( user );
          if (user?.uid) {
-            dispatch(login(user.uid, user.displayName));
+            dispatch(login({ uid: user.uid, displayName: user.displayName }));
             setIsLoggedIn(true);
 
          } else {

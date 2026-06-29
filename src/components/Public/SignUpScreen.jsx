@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import validator from 'validator';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeError, setError } from '../../actions/ui';
-import { startRegisterEmailPasswordName } from '../../actions/auth';
+import { removeError, setError } from '../../store/slices/uiSlice';
+import { startRegisterEmailPasswordName } from '../../store/slices/thunks';
 import '../../scss/components/public/_SignUpScreen.scss'
 
 
 export const SignUpScreen = () => {
+
+     const { loading } = useSelector(state => state.auth);
 
      const [{name, email, password, password2}, handleInputChange] = useForm({
           name: '',
@@ -19,13 +21,10 @@ export const SignUpScreen = () => {
 
      const dispatch = useDispatch();
 
-     const {ui} = useSelector(state => state)
-     console.log(ui);
-
      const formSubmit = (e) => {
           e.preventDefault();
           if ( isFormValid() ) {
-               dispatch( startRegisterEmailPasswordName(email, password, name) )
+               dispatch( startRegisterEmailPasswordName({email, password, name}) )
           }
      }
 
@@ -105,6 +104,8 @@ export const SignUpScreen = () => {
                               <button 
                                    className='form__item button' 
                                    type='submit'
+                                   disabled={ loading }
+                                   style={ loading ? {cursor: 'wait', backgroundColor: 'rgba(196, 196, 196, 1)',} : {}}
                               >
                                    Sign Up
                               </button>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { startLogout } from '../../actions/auth';
+import { startLogout } from '../../store/slices/thunks';
 import "../../scss/components/private/_YourTreeScreen.scss"
 
 export const YourTreeScreen = () => {

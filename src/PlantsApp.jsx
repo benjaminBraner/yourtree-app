@@ -1,5 +1,5 @@
 import { Provider } from "react-redux"
-import { AppRouter } from "./routers/AppRouter"
+import { AppRouter } from "./routers/AppRouter.jsx"
 import { store } from "./store/store"
 
 

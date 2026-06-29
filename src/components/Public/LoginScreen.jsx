@@ -1,14 +1,16 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth'
+import { startGoogleLogin, startLoginEmailPassword } from '../../store/slices/thunks'
 import { useForm } from '../../hooks/useForm'
+import googleIcon from '../../assets/google-icon.png'
 import '../../scss/components/public/_LoginScreen.scss'
 
 
 export const LoginScreen = () => {
-     const {loading} = useSelector(state => state.ui)
+     const {loading} = useSelector(state => state.auth)
      const dispatch = useDispatch();
+     
 
      const [{ email, password }, handleInputChange] = useForm({
           email: '',
@@ -17,7 +19,7 @@ export const LoginScreen = () => {
 
      const handleLogin = (e) => {
           e.preventDefault();
-          dispatch( startLoginEmailPassword( email, password ) )
+          dispatch( startLoginEmailPassword( {email, password} ) )
      }
 
 
@@ -58,6 +60,7 @@ export const LoginScreen = () => {
                                    className='form__item form__button'
                                    type='submit'
                                    disabled={loading}
+                                   style={ loading ? {cursor: 'wait', backgroundColor: 'rgba(196, 196, 196, 1)',} : {}}
                               >
                                    Login
                               </button>
@@ -69,7 +72,7 @@ export const LoginScreen = () => {
                                    onClick={ handleGoogleLogin }
                               >
                                    <div className="google-icon-wrapper">
-                                        <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
+                                        <img className="google-icon" src={googleIcon} alt="google button" />
                                    </div>
                                    Login with Google
                               </div>
