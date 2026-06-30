@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { startGoogleLogin, startLoginEmailPassword } from '../../store/slices/thunks'
 import { useForm } from '../../hooks/useForm'
 import googleIcon from '../../assets/google-icon.png'
+import toast from 'react-hot-toast'
 import '../../scss/components/public/_LoginScreen.scss'
 
 
@@ -78,7 +79,7 @@ export const LoginScreen = () => {
                               </div>
 
                                    
-                              <p className='form__item passwrd-forgot' onClick={ () =>alert("We are working on this functionality") }>
+                              <p className='form__item passwrd-forgot' onClick={ () => toast("We are working on this functionality", { icon: '🔧' }) }>
                                    Forgot your password?
                               </p>
 

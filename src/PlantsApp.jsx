@@ -1,7 +1,7 @@
 import { Provider } from "react-redux"
 import { AppRouter } from "./routers/AppRouter.jsx"
 import { store } from "./store/store"
-
+import { Toaster } from 'react-hot-toast'
 
 
 export const PlantsApp = () => {
@@ -9,7 +9,7 @@ export const PlantsApp = () => {
           <div>
                <Provider store={store}>
                     <AppRouter/>
-
+                    <Toaster position="bottom-right" />
                </Provider>
           </div>
      )

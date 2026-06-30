@@ -15,7 +15,7 @@ export const DashboardScreen = () => {
     const cartCount = useSelector(selectCartCount);
     const cartTotal = useSelector(selectCartTotal);
 
-    // Recommended: 4 random Easy plants
+    // 4 random Easy plants
     const recommended = useMemo(() => {
         const easy = plants.filter(p => p.care_level === 'Easy');
         return easy.sort(() => Math.random() - 0.5).slice(0, 4);

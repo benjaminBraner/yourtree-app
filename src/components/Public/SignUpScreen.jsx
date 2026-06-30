@@ -5,6 +5,7 @@ import validator from 'validator';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeError, setError } from '../../store/slices/uiSlice';
 import { startRegisterEmailPasswordName } from '../../store/slices/thunks';
+import toast from 'react-hot-toast';
 import '../../scss/components/public/_SignUpScreen.scss'
 
 
@@ -32,17 +33,17 @@ export const SignUpScreen = () => {
 
           if ( name.trim().length === 0 ) {
                dispatch( setError( 'name is required' ) );
-               alert('name is required')
+               toast.error('name is required')
                return false;
 
           } else if (!validator.isEmail(email) ) {
                dispatch( setError( 'Email is not valid' ) );
-               alert('Email is not valid')
+               toast.error('Email is not valid')
                return false;
 
           } else if ( password !== password2 || password.length < 5 ) {
                dispatch( setError( 'Password should be at least 6 characters and match' ) );
-               alert('Password should be at least 6 characters and match')
+               toast.error('Password should be at least 6 characters and match')
                return false;
 
           }
