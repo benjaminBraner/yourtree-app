@@ -1,0 +1,201 @@
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: var(--font-family);
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+// ── Header ────────────────────────────────────────────────
+.dashboard__header {
+    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dashboard__greeting {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.dashboard__title {
+    font-size: 2.75rem;
+    font-weight: 300; // Premium look
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.04em;
+    
+    strong {
+        font-weight: 600;
+    }
+}
+
+.dashboard__subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin: 4px 0 0;
+    font-weight: 300;
+}
+
+// ── Stats ─────────────────────────────────────────────────
+.dashboard__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 64px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+.stat-card {
+    background: var(--private-surface);
+    border-radius: var(--card-radius);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 1px solid var(--private-border);
+    transition: transform var(--transition), box-shadow var(--transition);
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--card-shadow);
+    }
+}
+
+.stat-card__icon {
+    font-size: 1.5rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--private-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-card__value {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.stat-card__label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+// ── Recommended ───────────────────────────────────────────
+.dashboard__recommended {
+    margin-bottom: 64px;
+}
+
+.dashboard__section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 400;
+        color: var(--text-primary);
+        margin: 0;
+        letter-spacing: -0.02em;
+    }
+}
+
+.dashboard__tag {
+    background: var(--accent-green-soft);
+    color: var(--accent-green-premium);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.dashboard__plant-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+
+    @media (max-width: 1100px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+// ── CTA ───────────────────────────────────────────────────
+.dashboard__cta {
+    background: var(--private-surface);
+    border-radius: var(--card-radius);
+    padding: 64px 40px;
+    text-align: center;
+    border: 1px solid var(--private-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard__cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    margin: 0 auto;
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 400;
+        color: var(--text-primary);
+        margin: 0 0 16px;
+        letter-spacing: -0.02em;
+    }
+
+    p {
+        color: var(--text-secondary);
+        margin: 0 0 32px;
+        font-size: 1.05rem;
+        font-weight: 300;
+        line-height: 1.6;
+    }
+}
+
+.dashboard__cta-btn {
+    background: var(--accent-primary);
+    color: #fff;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: all var(--transition);
+
+    &:hover {
+        background: var(--accent-primary-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+    }
+}

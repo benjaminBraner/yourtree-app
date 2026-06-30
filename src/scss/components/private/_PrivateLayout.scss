@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+.private-layout {
+    display: flex;
+    min-height: 100vh;
+    background: var(--private-bg);
+    font-family: var(--font-family);
+    color: var(--text-primary);
+}
+
+.private-layout__main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    transition: margin-left var(--transition);
+    overflow-y: auto;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 24px;
+
+    @media (min-width: 1200px) {
+        padding: 40px;
+    }
+
+    &--collapsed {
+        margin-left: var(--sidebar-width-collapsed);
+    }
+}
+
+@media (max-width: 900px) {
+    .private-layout__main {
+        margin-left: var(--sidebar-width-collapsed);
+        padding: 20px 16px;
+    }
+}

@@ -1,0 +1,231 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--sidebar-width);
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--private-border);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    transition: width var(--transition);
+    z-index: 100;
+    overflow: hidden;
+    font-family: var(--font-family);
+
+    &--collapsed {
+        width: var(--sidebar-width-collapsed);
+
+        .sidebar__logo { opacity: 0; pointer-events: none; }
+        .sidebar__user-info { opacity: 0; pointer-events: none; display: none; }
+        .sidebar__nav-label { opacity: 0; pointer-events: none; width: 0; }
+        .sidebar__badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 18px;
+            height: 18px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+        }
+        .sidebar__user {
+            justify-content: center;
+            background: transparent;
+            padding: 24px 0 12px 0;
+        }
+    }
+}
+
+// ── Header ────────────────────────────────────────────────
+.sidebar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 32px 16px;
+    min-height: 80px;
+}
+
+.sidebar__logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+
+    span {
+        color: var(--accent-green-premium);
+        font-weight: 300;
+    }
+}
+
+.sidebar__toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition);
+    flex-shrink: 0;
+
+    svg {
+        width: 20px;
+        height: 20px;
+        stroke-width: 1.5;
+    }
+
+    &:hover {
+        color: var(--text-primary);
+    }
+}
+
+// ── User ──────────────────────────────────────────────────
+.sidebar__user {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 32px;
+    margin-bottom: 24px;
+    transition: padding var(--transition);
+}
+
+.sidebar__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--private-bg);
+    border: 1px solid var(--private-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    flex-shrink: 0;
+}
+
+.sidebar__user-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.sidebar__user-role {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 4px 0 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+// ── Nav ───────────────────────────────────────────────────
+.sidebar__nav {
+    flex: 1;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar__nav-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all var(--transition);
+    position: relative;
+    white-space: nowrap;
+
+    &:hover {
+        color: var(--sidebar-text-hover);
+        background: var(--private-bg);
+    }
+
+    &--active {
+        background: var(--sidebar-active-bg);
+        color: var(--sidebar-active-text);
+        font-weight: 600;
+
+        .sidebar__nav-icon svg {
+            stroke-width: 2.5;
+            stroke: var(--accent-primary);
+        }
+    }
+}
+
+.sidebar__nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+
+    svg {
+        width: 22px;
+        height: 22px;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        transition: stroke-width var(--transition);
+    }
+}
+
+.sidebar__nav-label {
+    flex: 1;
+    transition: opacity 0.2s ease;
+}
+
+.sidebar__badge {
+    background: var(--text-primary);
+    color: var(--private-surface);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    min-width: 24px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+// ── Logout ────────────────────────────────────────────────
+.sidebar__logout {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    margin: 24px 16px;
+    border-radius: 16px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+
+    &:hover {
+        background: #FEF2F2; // soft red
+        color: #DC2626;
+        
+        .sidebar__nav-icon svg {
+            stroke: #DC2626;
+        }
+    }
+}

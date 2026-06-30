@@ -4,12 +4,11 @@ import { PublicRouter } from "./PublicRouter";
 import { firebase } from '../firebase/firebase-config'
 import { useDispatch } from "react-redux";
 import { login } from "../store/slices/authSlice";
-import { YourTreeScreen } from "../components/Private/YourTreeScreen";
+import { PrivateRouter } from "./PrivateRouter";
 import { PublicRoute } from "./PublicRoute";
 import { PrivateRoute } from "./PrivateRoute";
 
 export const AppRouter = () => {
-
 
    const dispatch = useDispatch();
 
@@ -19,17 +18,13 @@ export const AppRouter = () => {
    useEffect(() => {
 
       firebase.auth().onAuthStateChanged((user) => {
-         // console.log( user );
          if (user?.uid) {
             dispatch(login({ uid: user.uid, displayName: user.displayName }));
             setIsLoggedIn(true);
-
          } else {
             setIsLoggedIn(false);
          }
-
          setChecking(false)
-
       })
    }, [dispatch, setChecking, isLoggedIn]);
 
@@ -43,20 +38,17 @@ export const AppRouter = () => {
    return (
       <BrowserRouter>
          <Routes>
-            {/*Public */}
-
-
+            {/* Public */}
             <Route path="/*" element={
                <PublicRoute>
                   <PublicRouter />
                </PublicRoute>
             } />
 
-
-            {/*Private */}
+            {/* Private */}
             <Route path="/acc/*" element={
                <PrivateRoute>
-                  <YourTreeScreen />
+                  <PrivateRouter />
                </PrivateRoute>
             } />
          </Routes>
@@ -64,3 +56,4 @@ export const AppRouter = () => {
 
    )
 }
+

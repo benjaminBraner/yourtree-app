@@ -1,8 +1,14 @@
 
-
 @use './scss/abstracts/variables';
 @use './scss/abstracts/mixins';
 
 @use './scss/base/base';
 @use './scss/base/resets';
 
+// ── Private area ──────────────────────────────────────────
+@use './scss/components/private/PrivateLayout';
+@use './scss/components/private/PrivateSidebar';
+@use './scss/components/private/DashboardScreen';
+@use './scss/components/private/DashboardPlantCard';
+@use './scss/components/private/CatalogScreen';
+@use './scss/components/private/CartScreen';

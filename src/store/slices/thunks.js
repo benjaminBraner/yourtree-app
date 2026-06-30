@@ -10,6 +10,7 @@ export const startLoginEmailPassword = createAsyncThunk(
     }
 )
 
+
 export const startRegisterEmailPasswordName = createAsyncThunk(
     'auth/register-email-password-name',
     async ({email, password, name}) => {
@@ -19,6 +20,7 @@ export const startRegisterEmailPasswordName = createAsyncThunk(
     }
 )
 
+
 export const startGoogleLogin = createAsyncThunk(
     'auth/google-login',
     async () => {
@@ -26,6 +28,7 @@ export const startGoogleLogin = createAsyncThunk(
             return { uid: user.uid, displayName: user.displayName }
     }
 )
+
 
 export const startLogout = createAsyncThunk(
     'auth/logout',
